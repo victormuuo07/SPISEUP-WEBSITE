@@ -760,7 +760,7 @@ footer .footer-meta { font-size: 0.85rem; opacity: 0.85; }
 #splash-screen {
   position: fixed;
   inset: 0;
-  background: #960101;
+  background: #5c0909;
   display: flex;
   align-items: center;
   justify-content: center;

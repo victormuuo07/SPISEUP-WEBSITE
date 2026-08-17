@@ -136,7 +136,24 @@ p { line-height: 1.7; color: var(--ink-soft); margin: 0 0 1em; }
   justify-content: space-between;
   padding: 18px 0;
 }
-.logo-img { height: 42px; width: auto; }
+.logo-img {
+  height: 58px;
+  width: auto;
+  transform-origin: center;
+  animation: navLogoPop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Logo pops in from small to full size so it's the first thing that catches the eye */
+@keyframes navLogoPop {
+  0% { opacity: 0; transform: scale(0.3); }
+  55% { opacity: 1; transform: scale(1.18); }
+  75% { transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 600px) {
+  .logo-img { height: 46px; }
+}
 .nav-links {
   display: flex;
   gap: 34px;
@@ -734,4 +751,81 @@ footer .footer-meta { font-size: 0.85rem; opacity: 0.85; }
   text-align: center;
   font-size: 0.82rem;
   color: var(--ink-soft);
+}
+
+/* =========================================
+   SPICEUP BRAND INTRO / SPLASH SCREEN
+   ========================================= */
+
+#splash-screen {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+
+  animation: splashFadeOut 0.8s ease-in-out 1.8s forwards;
+}
+
+.splash-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.splash-logo {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+
+  animation: spiceUpLogoPop 1.1s cubic-bezier(0.34, 1.56, 0.64, 1)
+    forwards;
+}
+
+/* Logo enters from small → large */
+@keyframes spiceUpLogoPop {
+
+  0% {
+    opacity: 0;
+    transform: scale(0.25);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
+/* Splash screen disappears */
+@keyframes splashFadeOut {
+
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+}
+
+
+/* Mobile */
+@media (max-width: 600px) {
+
+  .splash-logo {
+    width: 210px;
+    height: 210px;
+  }
+
 }

@@ -24,6 +24,9 @@
   --shadow-soft: 0 10px 30px rgba(92, 15, 16, 0.14);
   --shadow-card: 0 6px 18px rgba(42, 23, 16, 0.10);
   --container: 1180px;
+
+  /* Consistent vertical rhythm between page sections */
+  --space-section: 64px;
 }
 
 * { box-sizing: border-box; }
@@ -137,10 +140,10 @@ p { line-height: 1.7; color: var(--ink-soft); margin: 0 0 1em; }
   padding: 18px 0;
 }
 .logo-img {
-  height: 58px;
+  height: 48px;
   width: auto;
   transform-origin: center;
-  animation: navLogoPop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation: navLogoPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
 /* Logo pops in from small to full size so it's the first thing that catches the eye */
@@ -152,7 +155,7 @@ p { line-height: 1.7; color: var(--ink-soft); margin: 0 0 1em; }
 }
 
 @media (max-width: 600px) {
-  .logo-img { height: 46px; }
+  .logo-img { height: 38px; }
 }
 .nav-links {
   display: flex;
@@ -187,13 +190,25 @@ p { line-height: 1.7; color: var(--ink-soft); margin: 0 0 1em; }
   height: 3px;
   background: var(--maroon);
   border-radius: 2px;
+  transform-origin: center;
+  transition: transform 0.25s ease, opacity 0.2s ease;
 }
 
-@media (max-width: 860px) {
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 560px) {
   .nav-toggle { display: flex; }
   .nav-links {
     position: absolute;
-    top: 76px;
+    top: 68px;
     left: 24px;
     right: 24px;
     background: var(--white);
@@ -218,7 +233,7 @@ p { line-height: 1.7; color: var(--ink-soft); margin: 0 0 1em; }
   grid-template-columns: 1.05fr 0.95fr;
   align-items: center;
   gap: 40px;
-  padding: 40px 0 70px;
+  padding: 36px 0 64px;
   position: relative;
 }
 .hero::before {
@@ -302,15 +317,24 @@ p { line-height: 1.7; color: var(--ink-soft); margin: 0 0 1em; }
 
 /* ---------- Section shared ---------- */
 .section-title {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-size: clamp(1.9rem, 3.5vw, 2.6rem);
 }
 .section-sub {
   max-width: 56ch;
-  margin: 0 auto 40px;
+  margin: 14px auto 40px;
+  line-height: 1.8;
   color: var(--ink-soft);
 }
 .center { text-align: center; }
-section, .featured, .menu-preview, .cta-section { padding: 70px 0; }
+
+/* Single source of truth for section vertical rhythm — avoid re-declaring
+   padding on individual section classes elsewhere, so these never fight
+   a more specific selector further down the sheet. */
+.featured,
+.menu-preview,
+.cta-section {
+  padding: var(--space-section) 0;
+}
 
 /* ---------- Feature cards ---------- */
 .cards {
@@ -342,7 +366,12 @@ section, .featured, .menu-preview, .cta-section { padding: 70px 0; }
 @media (max-width: 600px) { .cards { grid-template-columns: 1fr; } }
 
 /* ---------- Product spotlight ---------- */
-.menu-preview { background: var(--cream-deep); border-radius: var(--radius-lg); }
+.menu-preview {
+  background: var(--cream-deep);
+  border-radius: var(--radius-lg);
+  padding-left: 36px;
+  padding-right: 36px;
+}
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -406,6 +435,9 @@ section, .featured, .menu-preview, .cta-section { padding: 70px 0; }
 .chip-gold  { background: #fff5c0; color: #8a6a00; border: 1px solid #e6c94a; }
 
 @media (max-width: 900px) { .menu-grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) {
+  .menu-preview { padding-left: 20px; padding-right: 20px; }
+}
 
 /* ---------- Channels row ---------- */
 .channels {
@@ -449,8 +481,8 @@ section, .featured, .menu-preview, .cta-section { padding: 70px 0; }
   text-align: center;
   padding: 50px 0 20px;
 }
-.page-header h1 { font-size: clamp(2rem, 4vw, 2.8rem); }
-.page-header p { max-width: 50ch; margin: 0 auto; }
+.page-header h1 { font-size: clamp(2.5rem, 3vw, 2.8rem); }
+.page-header p { max-width: 80ch; margin: 0 auto; font-size: 1.1rem; line-height: 1.75; }
 
 /* ---------- About page ---------- */
 .about-grid {
@@ -458,9 +490,10 @@ section, .featured, .menu-preview, .cta-section { padding: 70px 0; }
   grid-template-columns: 1.1fr 0.9fr;
   gap: 46px;
   align-items: center;
-  padding: 40px 0;
+  padding: 50px 0;
 }
-.about-list li { margin-bottom: 12px; color: var(--ink-soft); }
+.about-list li { margin-bottom: 12px; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.7; }
+.about-text p { font-size: 1.05rem; line-height: 1.75; }
 .about-image img {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
@@ -501,6 +534,8 @@ section, .featured, .menu-preview, .cta-section { padding: 70px 0; }
   display: flex; gap: 14px; align-items: flex-start;
   padding: 14px 0;
   border-bottom: 1px solid #f0dcc0;
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 .values-list li:last-child { border-bottom: none; }
 .values-icon { font-size: 1.4rem; }

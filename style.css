@@ -481,8 +481,8 @@ p { line-height: 1.7; color: var(--ink-soft); margin: 0 0 1em; }
   text-align: center;
   padding: 50px 0 20px;
 }
-.page-header h1 { font-size: clamp(2.5rem, 3vw, 2.8rem); }
-.page-header p { max-width: 80ch; margin: 0 auto; font-size: 1.1rem; line-height: 1.75; }
+.page-header h1 { font-size: clamp(2rem, 4vw, 2.8rem); }
+.page-header p { max-width: 50ch; margin: 0 auto; font-size: 1.1rem; line-height: 1.75; }
 
 /* ---------- About page ---------- */
 .about-grid {
@@ -490,7 +490,7 @@ p { line-height: 1.7; color: var(--ink-soft); margin: 0 0 1em; }
   grid-template-columns: 1.1fr 0.9fr;
   gap: 46px;
   align-items: center;
-  padding: 50px 0;
+  padding: 40px 0;
 }
 .about-list li { margin-bottom: 12px; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.7; }
 .about-text p { font-size: 1.05rem; line-height: 1.75; }

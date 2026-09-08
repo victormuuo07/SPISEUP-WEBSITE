@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Become a SpiseUp Stockist</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#5c0f10">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SpiseUp">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <a href="index.html" class="logo"><img src="images/spiseup.png" alt="SpiseUp logo" class="logo-img"></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="story.html">Our Story</a></li>
+        <li><a href="wholesale.html">Price List</a></li>
+        <li><a href="stockist.html" class="active">Become a Stockist</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-cta"><a href="https://wa.me/254792007986" class="btn-primary order-btn" target="_blank" rel="noopener">Order on WhatsApp</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <div class="page-header">
+      <div class="eyebrow center">Start selling SpiseUp</div>
+      <h1>Join the growing network of SpiseUp stockists</h1>
+      <p>Hotels, restaurants, shops, schools, and small retailers already stock SpiseUp. Here's how to join them.</p>
+    </div>
+
+    <div class="stockist-types">
+      <div class="stockist-type"><div class="icon">🏨</div><p>Hotels</p></div>
+      <div class="stockist-type"><div class="icon">🍴</div><p>Restaurants</p></div>
+      <div class="stockist-type"><div class="icon">🏪</div><p>Mini supermarkets</p></div>
+      <div class="stockist-type"><div class="icon">🛒</div><p>Retail shops</p></div>
+      <div class="stockist-type"><div class="icon">🧺</div><p>Small retailers</p></div>
+      <div class="stockist-type"><div class="icon">🏫</div><p>Institutions &amp; schools</p></div>
+    </div>
+
+    <form class="stockist-form" id="stockistForm">
+      <h2 class="center" style="margin-bottom:6px;">Tell us about your business</h2>
+      <p class="center" style="margin-bottom:0;">This opens WhatsApp with your details pre-filled — just hit send.</p>
+
+      <label for="stkName">Your name</label>
+      <input type="text" id="stkName" placeholder="e.g. Jane Wanjiru" required>
+
+      <label for="stkBusiness">Business name</label>
+      <input type="text" id="stkBusiness" placeholder="e.g. Kitengela Nyama Choma Palace" required>
+
+      <label for="stkType">Business type</label>
+      <select id="stkType" required>
+        <option value="">Select one</option>
+        <option>Hotel</option>
+        <option>Restaurant</option>
+        <option>Mini supermarket</option>
+        <option>Retail shop</option>
+        <option>Small retailer / mama mboga</option>
+        <option>Institution / school</option>
+        <option>Other</option>
+      </select>
+
+      <label for="stkLocation">Location</label>
+      <input type="text" id="stkLocation" placeholder="e.g. Kitengela, Kajiado County" required>
+
+      <label for="stkPhone">Phone number</label>
+      <input type="tel" id="stkPhone" placeholder="e.g. 07XX XXX XXX" required>
+
+      <button type="submit" class="btn-primary">Send via WhatsApp →</button>
+    </form>
+
+    <div class="cta-section" style="margin-top:60px;">
+      <div class="cta-text">
+        <h2>Need bulk or distributor pricing instead?</h2>
+        <p>See our full wholesale price list and terms for bulk orders.</p>
+      </div>
+      <a href="wholesale.html" class="btn-gold btn-primary" style="background:linear-gradient(120deg,#f2b705,#ffd447); color:#5c0f10; box-shadow:0 10px 24px rgba(242,183,5,0.35);">See Price List →</a>
+    </div>
+
+    <footer>
+      <div class="logo-line">Spise<span>Up</span></div>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="story.html">Our Story</a>
+        <a href="wholesale.html">Price List</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-meta">Kitengela, Kajiado County, Kenya · 📞 +254 792 007 986 · @spiseupfoods</div>
+    </footer>
+  </div>
+
+  <div class="mobile-order-bar">
+    <a href="https://wa.me/254792007986?text=Hi%20SpiseUp%2C%20I%27d%20like%20to%20order" target="_blank" rel="noopener">🌶 Order on WhatsApp</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

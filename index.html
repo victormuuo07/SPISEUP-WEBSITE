@@ -5,10 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SpiseUp Spicy Mix - All-Natural African Seasoning</title>
   <meta name="description" content="SpiseUp Spicy Mix is a bold, all-natural African table seasoner made in Kitengela, Kenya. No MSG, no additives, just flavor.">
-  <link rel="icon" type="image/png" href="/images/favicon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#5c0f10">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SpiseUp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -32,6 +37,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="story.html">Our Story</a></li>
         <li><a href="wholesale.html">Price List</a></li>
+        <li><a href="stockist.html">Become a Stockist</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li class="nav-cta"><a href="https://wa.me/254792007986" class="btn-primary order-btn" target="_blank" rel="noopener">Order on WhatsApp</a></li>
       </ul>
@@ -46,11 +52,11 @@
     <div class="hero">
       <div class="hero-content">
         <div class="hero-badge">🌶 100% Natural · Made in Kitengela, Kenya</div>
-        <h1>Bold African Spicy Mix Seasoning- No MSG, No Additives. <span class="hero-highlight">SpiseUp</span></h1>
+        <h1>Bold African Spicy Mix Seasoning — No MSG, No Additives. <span class="hero-highlight">SpiseUp</span></h1>
         <p class="hero-description">SpiseUp Spicy Mix is a bold, all-natural African table seasoner made in Kitengela, Kenya. No MSG, no additives, just flavor.</p>
-        <div class="hero-actions">
-          <button class="btn-primary explore-menu">See Our Product →</button>
-          <a href="wholesale.html" class="btn-outline">View Price List</a>
+        <div class="hero-cta-row">
+          <a href="https://wa.me/254792007986?text=Hi%20SpiseUp%2C%20I%27d%20like%20to%20order" class="btn-primary" target="_blank" rel="noopener">Shop on WhatsApp →</a>
+          <a href="stockist.html" class="btn-outline">Become a Stockist</a>
         </div>
         <div class="hero-stats">
           <div class="stat">100+ <span>Hotel &amp; restaurant partners</span></div>
@@ -58,8 +64,11 @@
           <div class="stat">12mo <span>Shelf life</span></div>
         </div>
       </div>
-      <div class="hero-image">
-        <img src="images/mascot.png" alt="SpiseUp Spicy Mix all-natural African seasoning bottle" class="hero-image-img">
+      <div class="hero-image tilt-wrap" id="tiltWrap" style="position:relative;">
+        <span class="floating-spice" style="top:6%; left:10%; animation-delay:0s;">🌶</span>
+        <span class="floating-spice" style="top:70%; left:78%; animation-delay:1.2s;">⭐</span>
+        <span class="floating-spice" style="top:12%; left:80%; animation-delay:2.4s;">✨</span>
+        <img src="images/mascot.png" alt="SpiseUp Spicy Mix all-natural African seasoning bottle" class="hero-image-img tilt-target" id="tiltTarget">
       </div>
     </div>
 
@@ -71,18 +80,14 @@
       </div>
       <div class="cards">
         <div class="card">
-          <div class="card-icon">
-            <img src="images/chillipepper.ico" alt="Chili pepper" >
-          </div>
+          <div class="card-icon">🌶</div>
           <h3>Real chili, real bite</h3>
           <p>African bird's eye chili blended with cayenne and paprika for heat that builds, not burns.</p>
         </div>
         <div class="card">
-          <div class="card-icon">
-            <img src="images/table.png.ico" alt="Salt shaker" >
-          </div>
+          <div class="card-icon">🧂</div>
           <h3>Table-ready</h3>
-          <p>Designed for the shaker, not the pot sprinkle it straight onto your everyday meal</p>
+          <p>Designed for the shaker, not the pot — sprinkle it straight onto your everyday meal</p>
         </div>
         <div class="card">
           <div class="card-icon">🚫</div>
@@ -140,7 +145,7 @@
     <!-- Channels -->
     <div class="featured">
       <h2 class="section-title center">Where you'll find SpiseUp</h2>
-      <div class="section-sub center">Starting with free sampling at hotels and retail,mama mboga spots, we've grown one satisfied table at a time.</div>
+      <div class="section-sub center">Starting with free sampling at hotels, retail shops, and mama mboga spots, we've grown one satisfied table at a time.</div>
       <div class="channels">
         <div class="channel">
           <div class="channel-icon">🏨</div>
@@ -165,6 +170,85 @@
       </div>
     </div>
 
+    <!-- How to Use -->
+    <div class="featured">
+      <h2 class="section-title center">One bottle. Many meals.</h2>
+      <div class="section-sub center">What will you SpiseUp today? 🌶</div>
+      <div class="use-grid">
+        <div class="use-card">
+          <div class="use-icon">🍟</div>
+          <h4>Chips</h4>
+          <p>Shake, dip, enjoy.</p>
+        </div>
+        <div class="use-card">
+          <div class="use-icon">🥩</div>
+          <h4>Nyama choma</h4>
+          <p>Add straight after grilling.</p>
+        </div>
+        <div class="use-card">
+          <div class="use-icon">🍳</div>
+          <h4>Eggs</h4>
+          <p>A simple breakfast upgrade.</p>
+        </div>
+        <div class="use-card">
+          <div class="use-icon">🍗</div>
+          <h4>Chicken</h4>
+          <p>Finish with SpiseUp.</p>
+        </div>
+        <div class="use-card">
+          <div class="use-icon">🥑</div>
+          <h4>Avocado</h4>
+          <p>Try something different.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Find SpiseUp Near You -->
+    <div class="menu-preview">
+      <h2 class="section-title center">Find SpiseUp near you</h2>
+      <div class="section-sub center">Already stocked across these areas — more added as we grow.</div>
+      <div class="locator-grid">
+        <div class="locator-card">
+          <h4>📍 Kitengela</h4>
+          <p>Hotels · Restaurants · Shops</p>
+        </div>
+        <div class="locator-card">
+          <h4>📍 Athi River</h4>
+          <p>Hotels · Restaurants</p>
+        </div>
+        <div class="locator-card">
+          <h4>📍 Mlolongo</h4>
+          <p>Hotels · Restaurants</p>
+        </div>
+        <div class="locator-card">
+          <h4>📍 Greater Nairobi</h4>
+          <p>Growing distribution</p>
+        </div>
+      </div>
+      <div class="center">
+        <p style="margin-bottom:16px;">Can't find us in your area yet?</p>
+        <a href="https://wa.me/254792007986?text=Hi%20SpiseUp%2C%20I%27d%20like%20to%20request%20a%20stockist%20near%20me%20in%20" class="btn-outline" target="_blank" rel="noopener">Request a Stockist Near Me →</a>
+      </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="featured">
+      <h2 class="section-title center">Trusted by food businesses across Kenya</h2>
+      <div class="section-sub center">Real words from the hotels and shops that stock us.</div>
+      <div class="testimonial-grid" id="testimonialGrid">
+        <!-- Populated automatically from data/testimonials.js -->
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="menu-preview">
+      <h2 class="section-title center">SpiseUp in the wild</h2>
+      <div class="section-sub center">Real photos and videos from our customers and partners.</div>
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Populated automatically from data/gallery.js -->
+      </div>
+    </div>
+
     <!-- CTA -->
     <div class="cta-section">
       <div class="cta-text">
@@ -177,15 +261,45 @@
     <!-- Footer -->
     <footer>
       <div class="logo-line">Spise<span>Up</span></div>
-      <div class="footer-links">
-        <a href="about.html">About</a>
-        <a href="story.html">Our Story</a>
-        <a href="wholesale.html">Price List</a>
-        <a href="contact.html">Contact</a>
+      <div class="footer-columns">
+        <div>
+          <h5>SpiseUp</h5>
+          <p>Bold African chili seasoning made for Kenyan tables, kitchens and food businesses.</p>
+        </div>
+        <div>
+          <h5>Shop</h5>
+          <a href="https://wa.me/254792007986?text=Hi%20SpiseUp%2C%20I%27d%20like%20to%20order" target="_blank" rel="noopener">SpiseUp Spicy Mix</a>
+          <a href="wholesale.html">Price List</a>
+        </div>
+        <div>
+          <h5>Business</h5>
+          <a href="stockist.html">Become a Stockist</a>
+          <a href="wholesale.html">Wholesale Price List</a>
+        </div>
+        <div>
+          <h5>Connect</h5>
+          <a href="https://wa.me/254792007986" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="story.html">Our Story</a>
+          <a href="contact.html">Contact</a>
+        </div>
       </div>
       <div class="footer-meta">Kitengela, Kajiado County, Kenya · 📞 +254 792 007 986 · @spiseupfoods</div>
     </footer>
   </div>
+
+  <!-- Lightbox for gallery photos/videos -->
+  <div class="lightbox-overlay" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <div id="lightboxContent"></div>
+  </div>
+
+  <!-- Sticky mobile order bar -->
+  <div class="mobile-order-bar">
+    <a href="https://wa.me/254792007986?text=Hi%20SpiseUp%2C%20I%27d%20like%20to%20order" target="_blank" rel="noopener">🌶 Order on WhatsApp</a>
+  </div>
+
+  <script src="data/testimonials.js"></script>
+  <script src="data/gallery.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

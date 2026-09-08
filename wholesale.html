@@ -4,7 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SpiseUp — Wholesale Price List</title>
-<link rel="icon" href="images\spiseup.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#5c0f10">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SpiseUp">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
@@ -12,12 +20,13 @@
 <body>
   <div class="container">
     <nav class="navbar">
-      <a href="index.html" class="logo"><img src="images\spiseup.png" alt="SpiseUp logo" class="logo-img"></a>
+      <a href="index.html" class="logo"><img src="images/spiseup.png" alt="SpiseUp logo" class="logo-img"></a>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="story.html">Our Story</a></li>
         <li><a href="wholesale.html" class="active">Price List</a></li>
+        <li><a href="stockist.html">Become a Stockist</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li class="nav-cta"><a href="https://wa.me/254792007986" class="btn-primary order-btn" target="_blank" rel="noopener">Order on WhatsApp</a></li>
       </ul>
@@ -65,44 +74,43 @@
         </thead>
         <tbody>
           <tr>
-            <tbody>
-  <tr>
-    <td><span class="tier-label tier-retail">Retail / Consumers</span></td>
-    <td>1 bottle</td>
-    <td>
-      <span class="price-cell">
-        <s>KES 295</s> KES 250
-      </span>
-    </td>
-    <td class="revenue-cell">KES 250</td>
-  </tr>
+            <td><span class="tier-label tier-retail">Retail / Consumers</span></td>
+            <td>1 bottle</td>
+            <td>
+              <span class="price-cell">
+                <s>KES 295</s> KES 250
+              </span>
+            </td>
+            <td class="revenue-cell">KES 250</td>
+          </tr>
 
-  <tr>
-    <td><span class="tier-label tier-b2b">Wholesale</span></td>
-    <td>4 bottles</td>
-    <td><span class="price-cell">KES 230</span></td>
-    <td class="revenue-cell">KES 920</td>
-  </tr>
+          <tr>
+            <td><span class="tier-label tier-b2b">Wholesale</span></td>
+            <td>4 bottles</td>
+            <td><span class="price-cell">KES 230</span></td>
+            <td class="revenue-cell">KES 920</td>
+          </tr>
 
-  <tr class="highlight-row">
-    <td>
-      <span class="tier-label tier-wholesale">
-        Wholesale Plus
-        <span class="badge-best">BEST VALUE</span>
-      </span>
-    </td>
-    <td>6 bottles</td>
-    <td><span class="price-cell">KES 210</span></td>
-    <td class="revenue-cell">KES 1,260</td>
-  </tr>
+          <tr class="highlight-row">
+            <td>
+              <span class="tier-label tier-wholesale">
+                Wholesale Plus
+                <span class="badge-best">BEST VALUE</span>
+              </span>
+            </td>
+            <td>6 bottles</td>
+            <td><span class="price-cell">KES 210</span></td>
+            <td class="revenue-cell">KES 1,260</td>
+          </tr>
 
-  <tr>
-    <td><span class="tier-label tier-bulk">Distributor</span></td>
-    <td>12 bottles</td>
-    <td><span class="price-cell">KES 190</span></td>
-    <td class="revenue-cell">KES 2,280</td>
-  </tr>
-</tbody>
+          <tr>
+            <td><span class="tier-label tier-bulk">Distributor</span></td>
+            <td>12 bottles</td>
+            <td><span class="price-cell">KES 190</span></td>
+            <td class="revenue-cell">KES 2,280</td>
+          </tr>
+        </tbody>
+      </table>
 
       <!-- PRODUCT -->
       <div class="section-title small">Our Product</div>
@@ -163,6 +171,11 @@
     </div>
 
   </div>
+
+  <div class="mobile-order-bar">
+    <a href="https://wa.me/254792007986?text=Hi%20SpiseUp%2C%20I%27d%20like%20to%20order" target="_blank" rel="noopener">🌶 Order on WhatsApp</a>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

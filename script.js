@@ -70,4 +70,121 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // ---------------------------------------------------------------
+  // Interactive tilt effect on the hero product image
+  // ---------------------------------------------------------------
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const tiltWrap = document.getElementById('tiltWrap');
+  const tiltTarget = document.getElementById('tiltTarget');
+  if (tiltWrap && tiltTarget && !prefersReducedMotion) {
+    const maxTilt = 12; // degrees
+    function applyTilt(clientX, clientY) {
+      const rect = tiltWrap.getBoundingClientRect();
+      const px = (clientX - rect.left) / rect.width;  // 0..1
+      const py = (clientY - rect.top) / rect.height;  // 0..1
+      const rotateY = (px - 0.5) * maxTilt * 2;
+      const rotateX = (0.5 - py) * maxTilt * 2;
+      tiltTarget.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+    }
+    function resetTilt() {
+      tiltTarget.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+    }
+    tiltWrap.addEventListener('mousemove', (e) => applyTilt(e.clientX, e.clientY));
+    tiltWrap.addEventListener('mouseleave', resetTilt);
+    tiltWrap.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) applyTilt(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+    tiltWrap.addEventListener('touchend', resetTilt);
+  }
+
+  // ---------------------------------------------------------------
+  // Testimonials — rendered from data/testimonials.js
+  // ---------------------------------------------------------------
+  const testimonialGrid = document.getElementById('testimonialGrid');
+  if (testimonialGrid && typeof spiseupTestimonials !== 'undefined') {
+    const realOnes = spiseupTestimonials.filter(t => t.quote && !/^PASTE/i.test(t.quote.trim()));
+    if (realOnes.length === 0) {
+      testimonialGrid.innerHTML = '<div class="testimonials-empty">Customer stories coming soon — check back shortly!</div>';
+    } else {
+      testimonialGrid.innerHTML = realOnes.map(t => `
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-quote">"${t.quote}"</div>
+          <div class="testimonial-name">— ${t.name || 'SpiseUp customer'}</div>
+        </div>
+      `).join('');
+    }
+  }
+
+  // ---------------------------------------------------------------
+  // Gallery — rendered from data/gallery.js, broken/missing files
+  // are skipped silently (no broken-image icons on the live site)
+  // ---------------------------------------------------------------
+  const galleryGrid = document.getElementById('galleryGrid');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxContent = document.getElementById('lightboxContent');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  function openLightbox(item) {
+    if (!lightbox || !lightboxContent) return;
+    lightboxContent.innerHTML = item.type === 'video'
+      ? `<video src="${item.src}" controls autoplay playsinline></video>`
+      : `<img src="${item.src}" alt="${item.caption || 'SpiseUp gallery photo'}">`;
+    lightbox.classList.add('open');
+  }
+  function closeLightbox() {
+    if (!lightbox || !lightboxContent) return;
+    lightbox.classList.remove('open');
+    lightboxContent.innerHTML = '';
+  }
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightbox) lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+  if (galleryGrid && typeof spiseupGallery !== 'undefined') {
+    spiseupGallery.forEach(item => {
+      const cell = document.createElement('div');
+      cell.className = 'gallery-item';
+
+      if (item.type === 'video') {
+        const video = document.createElement('video');
+        video.src = item.src;
+        video.muted = true;
+        video.playsInline = true;
+        video.preload = 'metadata';
+        video.onerror = () => cell.remove();
+        cell.appendChild(video);
+        const badge = document.createElement('div');
+        badge.className = 'play-badge';
+        badge.innerText = '▶';
+        cell.appendChild(badge);
+      } else {
+        const img = document.createElement('img');
+        img.src = item.src;
+        img.alt = item.caption || 'SpiseUp in use';
+        img.onerror = () => cell.remove();
+        cell.appendChild(img);
+      }
+
+      cell.addEventListener('click', () => openLightbox(item));
+      galleryGrid.appendChild(cell);
+    });
+  }
+
+  // ---------------------------------------------------------------
+  // Become a Stockist form — builds a pre-filled WhatsApp message
+  // ---------------------------------------------------------------
+  const stockistForm = document.getElementById('stockistForm');
+  if (stockistForm) {
+    stockistForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('stkName')?.value || '';
+      const business = document.getElementById('stkBusiness')?.value || '';
+      const location = document.getElementById('stkLocation')?.value || '';
+      const phone = document.getElementById('stkPhone')?.value || '';
+      const type = document.getElementById('stkType')?.value || '';
+      const message = `Hi SpiseUp, I'd like to become a stockist.%0A%0AName: ${name}%0ABusiness: ${business}%0AType: ${type}%0ALocation: ${location}%0APhone: ${phone}`;
+      window.open(`https://wa.me/254792007986?text=${message}`, '_blank');
+    });
+  }
+
 });

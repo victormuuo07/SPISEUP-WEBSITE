@@ -1,6 +1,18 @@
 // Shared interactive functionality for all SpiseUp pages
 document.addEventListener('DOMContentLoaded', function () {
 
+  // Safety net for the intro splash screen (index.html only): the CSS
+  // animation normally fades it out and disables its clicks. If that
+  // animation never runs for any reason (reduced-motion settings, an
+  // older browser, anything we haven't thought of), force it out of
+  // the way after 3 seconds so it can never block the page.
+  const splash = document.getElementById('splash-screen');
+  if (splash) {
+    setTimeout(() => {
+      splash.style.display = 'none';
+    }, 3000);
+  }
+
   // Toast notification
   function showMessage(msg, isSuccess = true) {
     const toast = document.createElement('div');
@@ -56,6 +68,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // Escape any text before inserting it as HTML — prevents a stray "<" or
+  // quote mark in a testimonial/caption from being interpreted as markup,
+  // and blocks script injection if that data file is ever edited by
+  // someone untrusted.
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   // Contact form — no backend yet, so confirm receipt locally
   const contactForm = document.getElementById('contactForm');
   const formMessage = document.getElementById('formMessage');
@@ -109,8 +134,8 @@ document.addEventListener('DOMContentLoaded', function () {
       testimonialGrid.innerHTML = realOnes.map(t => `
         <div class="testimonial-card">
           <div class="testimonial-stars">★★★★★</div>
-          <div class="testimonial-quote">"${t.quote}"</div>
-          <div class="testimonial-name">— ${t.name || 'SpiseUp customer'}</div>
+          <div class="testimonial-quote">"${escapeHtml(t.quote)}"</div>
+          <div class="testimonial-name">— ${escapeHtml(t.name || 'SpiseUp customer')}</div>
         </div>
       `).join('');
     }
@@ -129,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!lightbox || !lightboxContent) return;
     lightboxContent.innerHTML = item.type === 'video'
       ? `<video src="${item.src}" controls autoplay playsinline></video>`
-      : `<img src="${item.src}" alt="${item.caption || 'SpiseUp gallery photo'}">`;
+      : `<img src="${item.src}" alt="${escapeHtml(item.caption || 'SpiseUp gallery photo')}">`;
     lightbox.classList.add('open');
   }
   function closeLightbox() {
@@ -182,7 +207,16 @@ document.addEventListener('DOMContentLoaded', function () {
       const location = document.getElementById('stkLocation')?.value || '';
       const phone = document.getElementById('stkPhone')?.value || '';
       const type = document.getElementById('stkType')?.value || '';
-      const message = `Hi SpiseUp, I'd like to become a stockist.%0A%0AName: ${name}%0ABusiness: ${business}%0AType: ${type}%0ALocation: ${location}%0APhone: ${phone}`;
+      const lines = [
+        "Hi SpiseUp, I'd like to become a stockist.",
+        '',
+        `Name: ${name}`,
+        `Business: ${business}`,
+        `Type: ${type}`,
+        `Location: ${location}`,
+        `Phone: ${phone}`,
+      ];
+      const message = encodeURIComponent(lines.join('\n'));
       window.open(`https://wa.me/254792007986?text=${message}`, '_blank');
     });
   }
